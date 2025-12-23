@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>my shop/cart</title>
+<style>
+body{font-family:Arial,sans-serif;padding:20px;}
+h2{color:#b30000;text-align:center;}
+#searchBar{width:100%;padding:10px;margin-bottom:20px;border-radius:5px;border:1px solid #ccc;}
+.products{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-bottom:20px;}
+.product{width:150px;border:1px solid #ccc;padding:10px;text-align:center;border-radius:5px;}
+.product img{width:100px;height:100px;object-fit:cover;margin-bottom:5px;}
+.product-name{font-weight:bold;margin-bottom:5px;}
+.product-price{color:#333;margin-bottom:10px;}
+.add-cart{background:#b30000;color:white;border:none;padding:5px 10px;cursor:pointer;border-radius:5px;}
+.cart{background:#f5f5f5;padding:10px;border-radius:5px;margin-bottom:20px;box-shadow:0 0 5px #aaa;}
+.cart-item{display:flex;align-items:center;gap:10px;margin-bottom:5px;border-bottom:1px solid #ccc;padding-bottom:5px;}
+.cart-item img{width:50px;height:50px;object-fit:cover;border-radius:3px;}
+.cart-item-details{flex:1;}
+.cart-item button{margin-left:5px;padding:2px 6px;border:none;border-radius:3px;background:#b30000;color:white;cursor:pointer;}
+.checkout-btn{background:#28a745;color:white;padding:8px 12px;border:none;border-radius:5px;cursor:pointer;margin-top:10px;}
+</style>
+</head>
+<body>
+
+<h2>Shop</h2>
+<input type="text" id="searchBar" placeholder="Search products..." onkeyup="searchProducts()">
+
+<!-- Cart below search bar -->
+<div class="cart" id="cart">
+<h3>Cart</h3>
+<div id="cartItems"></div>
+<div>Total: ₦<span id="totalPrice">0</span></div>
+<button class="checkout-btn" onclick="checkoutWhatsApp()">Checkout on WhatsApp</button>
+</div>
+
+<div class="products" id="products">
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src="powerbank.jpg" alt="Product Name">
+    <div class="product-name">30000mah power bank</div>
+    <div class="product-price">₦22,000</div>
+    <button class="add-cart" onclick="addToCart('30000mah power bank',22000,'powerbank.jpg')">Add to Cart</button>
+  </div>
+</div>
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src="redmi.jpg" alt="Product Name">
+    <div class="product-name">redmi A5</div>
+    <div class="product-price">₦108,000</div>
+    <button class="add-cart" onclick="addToCart('redmi',108000,'redmi.jpg')">Add to Cart</button>
+  </div>
+</div>
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src="smart watch.jpg" alt="Product Name">
+    <div class="product-name">smart watch</div>
+    <div class="product-price">₦18,000</div>
+    <button class="add-cart" onclick="addToCart('smart watch',18000,'smart watch.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src="oraimo.jpg" alt="Product Name">
+    <div class="product-name">oraimo earpod</div>
+    <div class="product-price">₦22,000</div>
+    <button class="add-cart" onclick="addToCart('oraimo',22000,'oraimo.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src=" phone cooler.jpg" alt="Product Name">
+    <div class="product-name">phone cooler</div>
+    <div class="product-price">₦11,000</div>
+    <button class="add-cart" onclick="addToCart('phone cooler',11000,'phone cooler.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src="Bluetooth.jpg" alt="Product Name">
+    <div class="product-name">Bluetooth earbuds</div>
+    <div class="product-price">₦10,000</div>
+    <button class="add-cart" onclick="addToCart('bluetooth earbuds',10000,'Bluetooth.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src="earpod 2.jpg" alt="Product Name">
+    <div class="product-name">pro T earbuds</div>
+    <div class="product-price">₦10,000</div>
+    <button class="add-cart" onclick="addToCart(' earpod 2',10000,'earpod 2.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src="3in1.jpg" alt="Product Name">
+    <div class="product-name">3in1 fast charger</div>
+    <div class="product-price">₦5,000</div>
+    <button class="add-cart" onclick="addToCart(' 3in1 fast charger',5000,'3in1.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src="phone holder.jpg" alt="Product Name">
+    <div class="product-name">phone holder</div>
+    <div class="product-price">₦16,000</div>
+    <button class="add-cart" onclick="addToCart('phone holder',16000,'phone holder.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src="power bank 2.jpg" alt="Product Name">
+    <div class="product-name">20000mah power bank</div>
+    <div class="product-price">₦16,000</div>
+    <button class="add-cart" onclick="addToCart('20000mah power bank',16000,'power bank 2.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src="power bank 3.jpg" alt="Product Name">
+    <div class="product-name"> 50000mah power bank</div>
+    <div class="product-price">₦33,000</div>
+    <button class="add-cart" onclick="addToCart('power bank 3',33000,'power bank 3.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src="pro earpod.jpg" alt="Product Name">
+    <div class="product-name"> pro earpod</div>
+    <div class="product-price">₦12,000</div>
+    <button class="add-cart" onclick="addToCart('pro earpod',12000,'pro earpod.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src="pro plus.jpg" alt="Product Name">
+    <div class="product-name"> pro plus</div>
+    <div class="product-price">₦14,000</div>
+    <button class="add-cart" onclick="addToCart('pro plus',14000,'pro plus.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src=" tilecc pro.jpg" alt="Product Name">
+    <div class="product-name">  tilecc pro </div>
+    <div class="product-price">₦14,000</div>
+    <button class="add-cart" onclick="addToCart(' tilecc pro ',14000,' tilecc pro.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src=" tilecc pro3.jpg" alt="Product Name">
+    <div class="product-name">  tilecc pro3 </div>
+    <div class="product-price">₦16,000</div>
+    <button class="add-cart" onclick="addToCart(' tilecc pro3 ',16000,' tilecc pro3.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src=" tilecc smart watch.jpg" alt="Product Name">
+    <div class="product-name">  tilecc smart watch </div>
+    <div class="product-price">₦26,000</div>
+    <button class="add-cart" onclick="addToCart(' tilecc smart watch',16000,' tilecc smart watch.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src=" ultra 3 smart .jpg" alt="Product Name">
+    <div class="product-name">ultra smart watch </div>
+    <div class="product-price">₦35,000</div>
+    <button class="add-cart" onclick="addToCart(' ultra smart watch',35000,' ultra smart watch.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+  <!-- Example product (copy-paste to add more) -->
+  <div class="product">
+    <img src=" zealot.jpg" alt="Product Name">
+    <div class="product-name">zealot Bluetooth speaker</div> </div>
+    <div class="product-price">₦22,000</div>
+    <button class="add-cart" onclick="addToCart('zealot Bluetooth speaker',22000,'zealot.jpg')">Add to Cart</button>
+  </div>
+</div>
+<p>for more products tap on the link</p>
+<a href="https://wa.me/+2349046319551">Chat with me on WhatsApp</a>
+
+<script>
+// -------------------- Cart --------------------
+let cart = JSON.parse(localStorage.getItem("cart")) || {};
+
+function saveCart(){ localStorage.setItem("cart",JSON.stringify(cart)); }
+
+function addToCart(name,price,image){
+  if(!cart[name]) cart[name] = {qty:0,price,image};
+  if(cart[name].qty >= 5){ alert("You can only add maximum 5 of this product."); return; }
+  cart[name].qty++;
+  saveCart(); updateCart();
+}
+
+function changeQty(name,change){
+  cart[name].qty += change;
+  if(cart[name].qty <= 0) delete cart[name];
+  saveCart(); updateCart();
+}
+
+function updateCart(){
+  const cartItemsDiv = document.getElementById("cartItems");
+  cartItemsDiv.innerHTML = "";
+  let total = 0;
+
+  for(let name in cart){
+    const item = cart[name];
+    const itemTotal = item.qty * item.price;
+    total += itemTotal;
+
+    const div = document.createElement("div");
+    div.className = "cart-item";
+
+    div.innerHTML = `
+      <img src="${item.image}" alt="${name}">
+      <div class="cart-item-details">
+        <strong>${name}</strong><br>
+        ₦${item.price} x ${item.qty} = ₦${itemTotal}
+      </div>
+      <button onclick="changeQty('${name}',-1)">-</button>
+      <button onclick="changeQty('${name}',1)">+</button>
+      <button onclick="changeQty('${name}',-${item.qty})">X</button>
+    `;
+    cartItemsDiv.appendChild(div);
+  }
+
+  document.getElementById("totalPrice").innerText = total;
+}
+
+function checkoutWhatsApp(){
+  let msg = "Hello, I want to buy this product:%0A%0A";
+  for(let name in cart){
+    const item = cart[name];
+    const itemTotal = item.qty * item.price;
+    msg += `Name: ${name}%0AAmount: ₦${itemTotal}%0AImage: ${item.image}%0A%0A`;
+  }
+  window.open(`https://wa.me/2349046319551?text=${msg}`, "_blank");
+}
+
+updateCart();
+
+// -------------------- Search --------------------
+function searchProducts(){
+  const input = document.getElementById("searchBar").value.toLowerCase();
+  const products = document.getElementsByClassName("product");
+  Array.from(products).forEach(p=>{
+    const name = p.querySelector(".product-name").innerText.toLowerCase();
+    p.style.display = name.includes(input) ? "block" : "none";
+  });
+}
+</script>
+
+</body>
+</html>

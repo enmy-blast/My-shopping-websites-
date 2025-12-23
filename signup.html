@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff0000, #b30000);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .signup-box {
+      background: #fff;
+      width: 340px;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+    .signup-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #b30000;
+    }
+    .signup-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .signup-box button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border: none;
+      background: #ff0000;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .signup-box button:hover {
+      background: #cc0000;
+    }
+    .signup-box p {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    .signup-box a {
+      color: #ff0000;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="signup-box">
+  <h2>Create Account</h2>
+
+  <input type="text" id="firstName" placeholder="First Name" required>
+  <input type="text" id="lastName" placeholder="Last Name" required>
+  <input type="number" id="age" placeholder="Age" required>
+  <input type="tel" id="phone" placeholder="Phone Number" required>
+
+  <button onclick="signUp()">Sign Up</button>
+
+  <p>
+    Already have an account?
+    <a href="login.html">Login</a>
+  </p>
+</div>
+
+<script>
+function signUp() {
+  // Get input values
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const age = document.getElementById('age').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+
+  // Basic validation
+  if (!firstName || !lastName || !age || !phone) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  // Save user data in localStorage
+  const userData = { firstName, lastName, age, phone };
+  localStorage.setItem('user', JSON.stringify(userData));
+
+  // Redirect to main page
+  window.location.href = 'main.html';
+}
+</script>
+
+</body>
+</html>
